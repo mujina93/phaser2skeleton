@@ -19,11 +19,12 @@ The idea is to fork this repository and create a new project based on this, whic
 
 1. Fork the repository: after having logged in on GitHub, on top of this page use the "fork" command. It creates a copy of this project owned by you (the process is completely online and quite straightforward).
 
-2. Download your brand new project on your workstation. To do this you need to issue a git command in your command prompt. So, open a command prompt on your workstation (exact method depends on your operative system), go into your preferred development folder (for example ~/devel on Linux) and issue this command:
+2. Download your brand new project on your workstation. To do this you need to issue a git command in your command prompt. To create the complete Git command, click on the green button on top of this page named "Clone or download" then click on the copy icon near the url inside the dialog just opened. It will copy the url in the clipboard for your convenience.
+Then, open a command prompt on your workstation (exact method depends on your operative system), go into your preferred development folder (for example ~/devel on Linux) and issue this command:
 ```
-git clone https://github.com/becomeagamedeveloper/phaser2skeleton.git
+git clone <PASTE HERE THE URL>
 ```
-And voilà! You have your brand new Phaser project on your workstation!
+And voilà! You have your brand new Phaser project on your workstation (Git creates a subfolder for you)!
 
 3. To run the project and test it works, you need to run a local web server. Maybe it happens you have Python already installed, you can check this going to your command prompt and issuing this command:
 ```
