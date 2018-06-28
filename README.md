@@ -9,7 +9,7 @@ It can be useful during BecameAGameDeveloper meetups where you need something wo
 
 * [Git](https://git-scm.com/downloads) (this is mandatory to access this repository and to share your work with teammates).
 
-* A GitHub account (if you're reading this probably you already have one, but in case you don't [register a new account](https://github.com/join), it's free!). If you're new to GitHUb you'll need to register an SSH key too: detailed instruction [here](https://help.github.com/articles/connecting-to-github-with-ssh/) (sorry, it's out of this document's scope).
+* A GitHub account (if you're reading this probably you already have one, but in case you don't [register a new account](https://github.com/join), it's free!). If you're new to GitHUb you'll need to register an SSH key too: detailed instruction [here](https://help.github.com/articles/connecting-to-github-with-ssh/) (sorry, it's out of this document' scope).
 
 * A local web server. This is the tricky part, more details below.
 
