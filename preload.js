@@ -8,5 +8,8 @@ function preload() {
 
     //  The second parameter is the URL of the image (relative)
     game.load.image('phaser-dude', 'assets/sprites/phaser-dude.png');
+
+    // Add another sprite
+    game.load.image('platform', 'assets/sprites/platform.png');
 }
 
