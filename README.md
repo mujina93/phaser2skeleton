@@ -54,4 +54,34 @@ If you haven't Python installed, you have a few choices.
   ```
   ## Work and share the project with your team
 
-  TBD
+  The idea is: everybody in the team works (hard!) writing code and creating whatever other files needed for your project (more on this later). 
+  
+  When you're good with a modification, you "commit" your work: this makes Git save a new version of your project' status (think of it as a snapshot).
+
+  When you're good with your project' status and you want/need to share it with your teammates, you need to "push" your codebase. This makes Git actually transfer all your modifications (since the last push) to the remote repository, hosted on GitHub.
+
+  From here, other teammates can do a "pull": this makes Git do the opposite: transfer all pending modifications from the remote repository to the local one, on everybody's workstation. So they can run and try them on their local Phaser instance (using the local webserver, as explained above).
+
+  A word about "other files needed": the point using Git (or any other Source Control System) is to put under version control only the "source files" and not any other derivative or elseway "automatically" produced files.
+
+  For example, is good to put under Git's control:
+
+  * language source files (like .js or .html)
+  * manually created assets (like .png, sound files, etc.)
+  * main project configuration files (like the .vscode folder if using Visual Studio Code (1))
+  * build files (like makefile, package.json, etc.)
+
+  Is NOT good to put under Git's control:
+
+  * Final .exe files (not present for Phaser projects, but it's the idea)
+  * Automatically minified .js files (produced by a build script)
+  * External dependencies like libraries, node modules, etc.
+  * In general, every item easily produced or downloaded by a script or another build tool (like make, shell script, etc.). Particularly if it's a large file.
+
+  To make this easy, Git uses an ignore file, called `.gitignore`, that can be put inside every directory under version control (even more than one per repository). Every line of this file is a file pattern to ignore. You can specify file names, folder names, subfolders, etc. More details here: https://git-scm.com/docs/gitignore
+
+  There are pre-made .gitignore files for the most common environments and development libraries: https://github.com/github/gitignore (er... no, there isn't a .gitignore file for Phaser, but you've learnt something new, isn't it good anyway? ^_^')
+
+  ---
+
+  (1) This is more my own opinion than a general and well supported best practice. Let's say that if everybody in your team is using the same IDE (for example, Visual Studio Code) with roughly the same extensions, then it's a good idea (good as in time and work saving) to put .vscode under version control.
