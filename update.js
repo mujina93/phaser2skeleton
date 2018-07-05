@@ -7,7 +7,7 @@ function update () {
 
     // collision
     game.physics.arcade.collide(player, platforms);
-    game.physics.arcade.collide(player, enemy);
+    //game.physics.arcade.collide(player, enemy);
     //game.physics.arcade.collide(diamonds, platforms);
     game.physics.arcade.overlap(enemies, platforms, patrol_check);
     
@@ -15,15 +15,14 @@ function update () {
     //game.physics.arcade.overlap(player, diamonds, collect, null, this);
     
     // overlap with black -> go negative
-    game.physics.arcade.overlap(player, black, function(player, black) {
+    if(game.physics.arcade.intersects(player, black)){
         black.lastOverlapped = game.time.now + 100;
         black.alpha = 0.5;
         if(negative === false){
-            player.body.gravity.y = -400;
+            player.body.gravity.y = -500;
         }
         negative = true;
-        //black.alpha = 0.5;
-    }); 
+    } 
     // unoverlap -> go positive
     /* black.forEach(function(window) {
     if (window.lastOverlapped && game.time.now > window.lastOverlapped) {
@@ -33,7 +32,7 @@ function update () {
     if(black.lastOverlapped && game.time.now > black.lastOverlapped){
         black.alpha = 1;
         if(negative === true){
-            player.body.gravity.y = 400;
+            player.body.gravity.y = 500;
         }
         negative = false;
     }
@@ -64,11 +63,6 @@ function update () {
             }
         }
     }
-}
-
-function invert(player, black){
-    console.log("black");
-    player.body.gravity.y = -200;
 }
 
 /* 

@@ -4,7 +4,6 @@ var cursors;
 var jumpButton;
 var score;
 var scoreLabel;
-var enemy;
 var black;
 
 function create() {
@@ -17,9 +16,7 @@ function create() {
     // initialize score
     score = 0;
     
-    // GUI label - score
-    scoreLabel = this.add.text(16,16,'Score: 0', {fontSize: '32px', fill: '#000'});
-    
+    // black space
     black = game.add.sprite(500,0,'platform');
     black.scale.y = 20;
     black.tint = 0x000000;
@@ -61,5 +58,9 @@ function create() {
     cursors = game.input.keyboard.createCursorKeys();
     // add SPACEBAR binding
     jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+
+
+    // GUI label - score
+    scoreLabel = this.add.text(16,16,'Score: 0', {fontSize: '32px', fill: '#000'});
     
 }
