@@ -1,15 +1,16 @@
 
 function preload() {
+    
+    game.stage.backgroundColor = '#85b5e1';
 
-    //  You can fill the preloader with as many assets as your game requires
+    game.load.baseURL = 'http://examples.phaser.io/assets/';
+    game.load.crossOrigin = 'anonymous';
 
-    //  Here we are loading a sprite. The first parameter is the unique
-    //  string by which we'll identify the sprite later in our code.
+    game.load.image('player', 'sprites/phaser-dude.png');
+    game.load.image('platform', 'sprites/platform.png');
+    game.load.image('star', 'sprites/diamond.png');
+    
+    // enemy imgae
+    game.load.image('enemy', 'sprites/orb-red.png');
 
-    //  The second parameter is the URL of the image (relative)
-    game.load.image('phaser-dude', 'assets/sprites/phaser-dude.png');
-
-    // Add another sprite
-    game.load.image('platform', 'assets/sprites/platform.png');
 }
-

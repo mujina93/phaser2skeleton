@@ -1,27 +1,47 @@
-function update() {
-
-    // This stops the sprite, should it was moving.
-    sprite.body.velocity.x = 0;
-    sprite.body.velocity.y = 0;
-
-    // Now process the input state and set the sprite velocity accordingly.
-    // Horizontal movement
+function update () {
+    // collision
+    game.physics.arcade.collide(player, platforms);
+    game.physics.arcade.collide(diamonds, platforms);
+    game.physics.arcade.collide(enemies, platforms);
+    
+    // overlap and collect
+    game.physics.arcade.overlap(player, diamonds, collect, null, this);
+    
+    // overlap and die
+    game.physics.arcade.overlap(player, enemies, die, null, this);
+    
+    // idle
+    player.body.velocity.x = 0;
+    
+    // move
     if (cursors.left.isDown)
     {
-        sprite.body.velocity.x = -600;
+        player.body.velocity.x = - this.X_SPEED;
     }
     else if (cursors.right.isDown)
     {
-        sprite.body.velocity.x = 600;
+        player.body.velocity.x = this.X_SPEED;
     }
-    // Vertical movement
-    if (cursors.up.isDown)
+    
+    // jump with air-control
+    if (jumpButton.isDown && (player.body.onFloor() || player.body.touching.down))
     {
-        sprite.body.velocity.y = -600;
+        player.body.velocity.y = - this.Y_SPEED;
     }
-    else if (cursors.down.isDown)
-    {
-        sprite.body.velocity.y = 600;
-    }
+}
 
+// collect callback
+function collect (player, diamond){
+    diamond.kill();
+    
+    // update score
+    score += 1;
+    
+    // update GUI
+    scoreLabel.text = 'Score: ' + score;
+}
+
+function die (player, enemy){
+    player.kill();
+    this.phyics.pause;
 }
