@@ -1,12 +1,15 @@
 function update () {
     // collision
     game.physics.arcade.collide(player, platforms);
+    game.physics.arcade.collide(player,enemy);
     //game.physics.arcade.collide(diamonds, platforms);
     //game.physics.arcade.collide(enemies, platforms);
     
     // overlap and collect
     //game.physics.arcade.overlap(player, diamonds, collect, null, this);
     
+    game.physics.arcade.overlap(player,black,invert);
+
     // overlap and die
     //game.physics.arcade.overlap(player, enemies, die, null, this);
     
@@ -29,6 +32,12 @@ function update () {
         player.body.velocity.y = - this.Y_SPEED;
     }
 }
+
+function invert(player, black){
+    console.log("black");
+    player.body.gravity.y = -200;
+}
+
 /* 
 // collect callback
 function collect (player, diamond){

@@ -5,6 +5,7 @@ var jumpButton;
 var score;
 var scoreLabel;
 var enemy;
+var black;
 
 function create() {
     // global variables
@@ -19,7 +20,12 @@ function create() {
     // GUI label - score
     scoreLabel = this.add.text(16,16,'Score: 0', {fontSize: '32px', fill: '#000'});
     
-    // player
+    black = game.add.sprite(500,0,'platform');
+    black.scale.y = 20;
+    black.tint = 0x000000;
+    game.physics.arcade.enable(black);
+
+
     player = game.add.sprite(400, 500, 'player');
     enemy = game.add.sprite(300,400,'enemy');
     
@@ -48,11 +54,11 @@ function create() {
     game.physics.arcade.enable(player);
     player.body.collideWorldBounds = true;
     player.body.gravity.y = this.GRAVITY;
-    
+
+    game.physics.arcade.enable(enemy);
     enemy.body.gravity.y = this.GRAVITY;
     enemy.body.collideWorldBounds = true;
-    game.physics.arcade.enable(enemy);
-
+    
     // platforms
     platforms = game.add.physicsGroup();
     platforms.create(0, 550, 'platform');
