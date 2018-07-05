@@ -7,9 +7,9 @@ function update () {
 
     // collision
     game.physics.arcade.collide(player, platforms);
-    game.physics.arcade.collide(player,enemy);
+    game.physics.arcade.collide(player, enemy);
     //game.physics.arcade.collide(diamonds, platforms);
-    //game.physics.arcade.collide(enemies, platforms);
+    game.physics.arcade.overlap(enemies, platforms, patrol_check);
     
     // overlap and collect
     //game.physics.arcade.overlap(player, diamonds, collect, null, this);
@@ -87,3 +87,29 @@ function die (player, enemy){
     player.kill();
     this.phyics.pause;
 } */
+
+function patrol_check(enemy, platform) {
+    if (enemy.x + enemy.width/2 > platform.x + platform.width) {
+        enemy.body.velocity.x = -game.ENEMY_SPEED;
+    }
+    if (enemy.x + enemy.width/2 < platform.x) {
+        enemy.body.velocity.x = game.ENEMY_SPEED;
+    }
+    /*
+    if (enemy.x + enemy.width/2 > platform.x + platform.width) {
+        enemy.body.velocity.x = 0;
+        enemy.body.velocity.y = game.ENEMY_SPEED;
+    }
+    if (enemy.y + enemy.height/2 > platform.y + platform.height) {
+        enemy.body.velocity.x = -game.ENEMY_SPEED;
+        enemy.body.velocity.y = 0;
+    }
+    if (enemy.x + enemy.width/2 < platform.x) {
+        enemy.body.velocity.x = 0;
+        enemy.body.velocity.y = -game.ENEMY_SPEED;
+    }
+    if (enemy.y + enemy.height/2 < platform.y) {
+        enemy.body.velocity.x = game.ENEMY_SPEED;
+        enemy.body.velocity.y = 0;
+    } */
+}

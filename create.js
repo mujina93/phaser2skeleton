@@ -12,7 +12,7 @@ function create() {
     this.X_SPEED = 250;
     this.Y_SPEED = 400;
     this.GRAVITY = 500;
-    this.ENEMY_SPEED = 400;
+    game.ENEMY_SPEED = 100;
     
     // initialize score
     score = 0;
@@ -28,7 +28,6 @@ function create() {
 
 
     player = game.add.sprite(400, 500, 'player');
-    enemy = game.add.sprite(300,400,'enemy');
     
     /* // diamonds
     diamonds = game.add.physicsGroup();
@@ -36,36 +35,27 @@ function create() {
         var diamond = diamonds.create(i*70, 0, 'star'); // create
         diamond.body.gravity.y = this.GRAVITY; // gravity
         diamond.body.bounce.y = 0.7 + Math.random()*0.2; // bouncing
-    }
-    
-    // enemies
-    enemies = game.add.physicsGroup();
-    for(var j=0; j<5; j++){
-        var enemy = enemies.create(j*180+20, 0, 'enemy');
-        // no gravity, only initial velocity
-        enemy.body.velocity.x = this.ENEMY_SPEED*(Math.random()*2-1);
-        enemy.body.velocity.y = this.ENEMY_SPEED*(Math.random()*2-1);
-        // maximum bouncing everywhere
-        enemy.body.bounce.x = 1;
-        enemy.body.bounce.y = 1;
-        enemy.body.collideWorldBounds = true;
-    } */
+    }*/
     
     // physics
     game.physics.arcade.enable(player);
     player.body.collideWorldBounds = true;
     player.body.gravity.y = this.GRAVITY;
-
-    game.physics.arcade.enable(enemy);
-    enemy.body.gravity.y = this.GRAVITY;
-    enemy.body.collideWorldBounds = true;
     
     // platforms
     platforms = game.add.physicsGroup();
-    platforms.create(0, 550, 'platform');
     platforms.create(500, 400, 'platform');
-    platforms.create(50,250, 'platform'); // new platform
+    platforms.create(50, 250, 'platform'); // new platform
     platforms.setAll('body.immovable', true);
+
+    // enemies
+    enemies = game.add.physicsGroup();
+    for(var j=0; j<1; j++){
+        var enemy = enemies.create(200, 204, 'enemy');
+        enemy.scale.setTo(0.5, 0.5);
+        enemy.body.collideWorldBounds = true;
+        enemy.body.velocity.x = game.ENEMY_SPEED;
+    }
     
     // controls
     cursors = game.input.keyboard.createCursorKeys();
