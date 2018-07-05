@@ -1,14 +1,14 @@
 function update () {
     // collision
     game.physics.arcade.collide(player, platforms);
-    game.physics.arcade.collide(diamonds, platforms);
-    game.physics.arcade.collide(enemies, platforms);
+    //game.physics.arcade.collide(diamonds, platforms);
+    //game.physics.arcade.collide(enemies, platforms);
     
     // overlap and collect
-    game.physics.arcade.overlap(player, diamonds, collect, null, this);
+    //game.physics.arcade.overlap(player, diamonds, collect, null, this);
     
     // overlap and die
-    game.physics.arcade.overlap(player, enemies, die, null, this);
+    //game.physics.arcade.overlap(player, enemies, die, null, this);
     
     // idle
     player.body.velocity.x = 0;
@@ -29,7 +29,7 @@ function update () {
         player.body.velocity.y = - this.Y_SPEED;
     }
 }
-
+/* 
 // collect callback
 function collect (player, diamond){
     diamond.kill();
@@ -44,4 +44,4 @@ function collect (player, diamond){
 function die (player, enemy){
     player.kill();
     this.phyics.pause;
-}
+} */
