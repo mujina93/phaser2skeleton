@@ -24,6 +24,7 @@ function create() {
     black.scale.y = 20;
     black.tint = 0x000000;
     game.physics.arcade.enable(black);
+    
 
 
     player = game.add.sprite(400, 500, 'player');

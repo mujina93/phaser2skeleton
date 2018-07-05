@@ -1,4 +1,10 @@
+var negative = false;
+
 function update () {
+
+    // idle
+    player.body.velocity.x = 0;
+
     // collision
     game.physics.arcade.collide(player, platforms);
     game.physics.arcade.collide(player,enemy);
@@ -8,13 +14,33 @@ function update () {
     // overlap and collect
     //game.physics.arcade.overlap(player, diamonds, collect, null, this);
     
-    game.physics.arcade.overlap(player,black,invert);
+    // overlap with black -> go negative
+    game.physics.arcade.overlap(player, black, function(player, black) {
+        black.lastOverlapped = game.time.now + 100;
+        black.alpha = 0.5;
+        if(negative === false){
+            player.body.gravity.y = -400;
+        }
+        negative = true;
+        //black.alpha = 0.5;
+    }); 
+    // unoverlap -> go positive
+    /* black.forEach(function(window) {
+    if (window.lastOverlapped && game.time.now > window.lastOverlapped) {
+        window.alpha = 1;
+    } 
+    }); */
+    if(black.lastOverlapped && game.time.now > black.lastOverlapped){
+        black.alpha = 1;
+        if(negative === true){
+            player.body.gravity.y = 400;
+        }
+        negative = false;
+    }
 
     // overlap and die
     //game.physics.arcade.overlap(player, enemies, die, null, this);
     
-    // idle
-    player.body.velocity.x = 0;
     
     // move
     if (cursors.left.isDown)
@@ -27,9 +53,16 @@ function update () {
     }
     
     // jump with air-control
-    if (jumpButton.isDown && (player.body.onFloor() || player.body.touching.down))
-    {
-        player.body.velocity.y = - this.Y_SPEED;
+    if (jumpButton.isDown){
+        if(!negative){
+            if ((player.body.onFloor() || player.body.touching.down)){
+                player.body.velocity.y = -this.Y_SPEED;
+            }
+        }else{
+            if ((player.body.onCeiling() || player.body.touching.up)){
+                player.body.velocity.y = this.Y_SPEED;
+            }
+        }
     }
 }
 
